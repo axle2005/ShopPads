@@ -1,0 +1,12 @@
+name: ShopPads
+description: Blank
+author: axle2005
+website: www.axle2005.ca
+version: 1.0
+main: mc.axle.ShopPads.ShopPads
+commands:
+   sp:
+      description: Basic ShopPads command
+      usage: /sp
+      permission: ShopPads.access
+      permission-message: You don't have ShopPads.access
