@@ -1,5 +1,8 @@
 package mc.axle.ShopPads.Commands;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -31,6 +34,7 @@ public class createCommand {
 		ProtectedCuboidRegion region = null;
 		Location l = player.getLocation();
 		Location l2 = player.getLocation();
+		String fname = null;
 		
 		
 		if (args[1].isEmpty()) {
@@ -43,8 +47,8 @@ public class createCommand {
 
 			Location loc1 = loca1(l, args[1], player);
 			Location loc2 = loca2(l2, player);
-
-			region = new ProtectedCuboidRegion(args[1].toString().toLowerCase(),
+			fname = checkAreaFiles(args[1]);
+			region = new ProtectedCuboidRegion(fname.toLowerCase(),
 					new BlockVector(WorldEditHandler.convertToSk89qBV(loc2)), new BlockVector(WorldEditHandler.convertToSk89qBV(loc1)));
 
 		}
@@ -62,7 +66,7 @@ public class createCommand {
 		if (args.length == 2) {
 			WorldGuardHandler.editRegion(BlockID.STONE_BRICK, region, player, 2);
 		} else {
-			int y = Integer.parseInt(args[1].toString());
+			int y = Integer.parseInt(args[2].toString());
 			WorldGuardHandler.editRegion(y, region, player, 2);
 		}
 
@@ -76,7 +80,27 @@ public class createCommand {
 	
 	
 	}
-	
+	private String checkAreaFiles(String fname)
+	{
+		File file = new File(
+				this.plugin.getDataFolder().getParentFile() + File.separator + "AreaShop" + File.separator + "regions",
+				fname + "1.yml");
+		if (file.exists()) {
+			int i =1;
+			while(file.exists())
+			{
+				fname = fname+""+i;
+				file = new File(this.plugin.getDataFolder().getParentFile() + File.separator + "AreaShop" + File.separator + "regions",
+						fname + ".yml");
+				
+			}
+				
+		} else {
+		
+		
+		}
+		return fname;
+	}
 
 	
 	private double getPrice(String value) {
