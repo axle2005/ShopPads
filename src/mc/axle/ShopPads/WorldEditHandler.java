@@ -1,8 +1,10 @@
 package mc.axle.ShopPads;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 
+import com.sk89q.worldedit.BlockVector;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 
 public class WorldEditHandler {
@@ -16,6 +18,10 @@ public class WorldEditHandler {
 		}
 
 		return (WorldEditPlugin) plugin;
+	}
+	
+	public static BlockVector convertToSk89qBV(Location location) {
+		return (new BlockVector(location.getX(), location.getY(), location.getZ()));
 	}
 
 }

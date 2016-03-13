@@ -16,6 +16,7 @@ import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 public class WorldGuardHandler {
 
 	@SuppressWarnings("deprecation")
+	public
 	static void editRegion(int block, ProtectedCuboidRegion region, Player player, int layer) {
 		//WorldEditPlugin we = WorldEditHandler.getWorldEdit();
 		Polygonal2DRegion weRegion = new Polygonal2DRegion(BukkitUtil.getLocalWorld(player.getWorld()),
@@ -31,7 +32,7 @@ public class WorldGuardHandler {
 
 	}
 
-	static WorldGuardPlugin getWorldGuard() {
+	public static WorldGuardPlugin getWorldGuard() {
 		Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
 
 		// WorldGuard may not be loaded
