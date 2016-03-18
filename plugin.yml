@@ -1,4 +1,5 @@
 name: ShopPads
+depend: [WorldEdit, WorldGuard, AreaShop]
 description: Blank
 author: axle2005
 website: www.axle2005.ca
@@ -7,6 +8,7 @@ main: mc.axle.ShopPads.ShopPads
 commands:
    sp:
       description: Basic ShopPads command
-      usage: /sp
+      usage: /sp [create/delete] [size] [block]
       permission: ShopPads.access
       permission-message: You don't have ShopPads.access
+      aliases: shoppads

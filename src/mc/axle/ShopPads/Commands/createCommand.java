@@ -70,7 +70,7 @@ public class createCommand {
 			WorldGuardHandler.editRegion(y, region, player, 2);
 		}
 
-		placeSign(player, args[1], getPrice(args[1]));
+		placeSign(player, fname, getPrice(args[1]));
 		//region = new ProtectedCuboidRegion(args[1].toString().toLowerCase(),
 		//		new BlockVector(convertToSk89qBV(loc2)), new BlockVector(convertToSk89qBV(loc1)));
 	
@@ -82,6 +82,7 @@ public class createCommand {
 	}
 	private String checkAreaFiles(String fname)
 	{
+		String newname = null;
 		File file = new File(
 				this.plugin.getDataFolder().getParentFile() + File.separator + "AreaShop" + File.separator + "regions",
 				fname + "1.yml");
@@ -89,17 +90,17 @@ public class createCommand {
 			int i =1;
 			while(file.exists())
 			{
-				fname = fname+""+i;
+				newname= fname+""+i;
 				file = new File(this.plugin.getDataFolder().getParentFile() + File.separator + "AreaShop" + File.separator + "regions",
-						fname + ".yml");
+						newname + ".yml");
 				
 			}
 				
 		} else {
-		
+		newname = fname+"1";
 		
 		}
-		return fname;
+		return newname;
 	}
 
 	
